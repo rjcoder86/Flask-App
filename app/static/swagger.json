@@ -1,0 +1,83 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Flask Swagger Example"
+  },
+  "basePath": "/api",
+  "paths": {
+    "/add_student": {
+      "post": {
+        "summary": "Add a new student",
+        "parameters": [
+          {
+            "name": "student",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "standard": {
+                  "type": "string"
+                }
+              },
+              "required": ["name", "standard"]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Student added successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "standard": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation Error"
+          }
+        }
+      }
+    },
+    "/students": {
+      "get": {
+        "summary": "Get list of students",
+        "responses": {
+          "200": {
+            "description": "List of students",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "standard": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
